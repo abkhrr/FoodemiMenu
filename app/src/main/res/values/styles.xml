@@ -1,0 +1,314 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="FOODEMI.DayNight" parent="Theme.MaterialComponents.Light">
+        <item name="colorPrimary"                     >@color/FOODEMI_COLOR_PRIMARY</item>
+        <item name="colorPrimaryDark"                 >@color/FOODEMI_COLOR_PRIMARY</item>
+        <item name="colorAccent"                      >@color/FOODEMI_COLOR_PRIMARY_INVERT</item>
+        <item name="android:statusBarColor"           >@color/white</item>
+        <item name="windowNoTitle"                    >true</item>
+        <item name="android:windowBackground"         >@color/FOODEMI_COLOR_BACKGROUND_PRIMARY</item>
+        <item name="android:colorBackground"          >@color/FOODEMI_COLOR_BACKGROUND_PRIMARY</item>
+        <item name="android:textColorPrimary"         >@color/FOODEMI_COLOR_TEXT_MAIN_INVERT</item>
+        <item name="android:homeAsUpIndicator"        >@drawable/ic_arrow_back_black_24dp</item>
+        <item name="dialogTheme"                      >@style/FOODEMI.Dialog.DayNight</item>
+        <item name="android:datePickerDialogTheme"    >@style/FOODEMI.Dialog.Date</item>
+        <item name="android:timePickerDialogTheme"    >@style/FOODEMI.Dialog.Date</item>
+        <item name="android:colorEdgeEffect"          >@color/FOODEMI_COLOR_PRIMARY</item>
+        <item name="android:colorControlActivated"    >@color/FOODEMI_COLOR_ACCENT_PRIMARY</item>
+        <item name="colorControlActivated"            >@color/FOODEMI_COLOR_ACCENT_SECONDARY</item>
+        <item name="textAppearanceBody2"              >@style/TextAppearance.MaterialComponents.Body2</item>
+        <item name="android:windowLightStatusBar" tools:ignore="NewApi">true</item>
+        <item name="android:editTextColor"            >@color/FOODEMI_COLOR_TEXT_NAVIGATION</item>
+        <item name="drawerArrowStyle"                 >@style/FOODEMI.DrawerArrow</item>
+        <item name="colorNavigationItem">@color/menu_item_color_state</item>
+        <item name="colorNavigationItemSelected">@color/FOODEMI_COLOR_TEXT_MAIN</item>
+        <item name="drawableNavigationItemBackground">@drawable/menu_background_color_state</item>
+        <item name="navigationViewStyle">@style/AppNavigationViewStyle</item>
+        <item name="android:alertDialogTheme"         >@style/FOODEMI.AlertDialogTheme</item>
+        <item name="tabStyle">@style/FOODEMITabAppearance</item>
+    </style>
+
+    <style name="FOODEMI.AlertDialogTheme" parent="ThemeOverlay.MaterialComponents.Dialog.Alert">
+        <item name="android:textColorPrimary"                   >@color/FOODEMI_COLOR_TEXT_MAIN</item>
+        <item name="android:buttonBarPositiveButtonStyle"       >@style/PositiveButtonStyle</item>
+        <item name="android:buttonBarNeutralButtonStyle"        >@style/NeutraButtonStyle</item>
+        <item name="android:buttonBarNegativeButtonStyle"       >@style/NegativeButtonStyle</item>
+    </style>
+
+    <style name="NegativeButtonStyle" parent="Widget.AppCompat.Button.ButtonBar.AlertDialog">
+        <item name="android:textColor">#f00</item>
+    </style>
+
+    <style name="PositiveButtonStyle" parent="Widget.AppCompat.Button.ButtonBar.AlertDialog">
+        <item name="android:textColor">#1F6D32</item>
+    </style>
+
+    <style name="NeutraButtonStyle" parent="Widget.AppCompat.Button.ButtonBar.AlertDialog">
+        <item name="android:textColor">#156397</item>
+    </style>
+
+    <style name="AppNavigationViewStyle" parent="Widget.MaterialComponents.NavigationView">
+        <item name="itemTextAppearance">@style/AppNavigationViewItemTextAppearance</item>
+        <item name="itemIconTint">?attr/colorNavigationItem</item>
+        <item name="itemTextColor">?attr/colorNavigationItem</item>
+        <item name="itemBackground">?attr/drawableNavigationItemBackground</item>
+    </style>
+
+    <style name="DialogTheme" parent="Theme.AppCompat.Light.Dialog">
+        <item name="colorAccent">@color/FOODEMI_DEFAULT_BACKGROUND</item>
+        <item name="colorPrimary">@color/white</item>
+        <item name="colorPrimaryDark">@color/FOODEMI_COLOR_TEXT_MAIN</item>
+    </style>
+
+    <style name="customSpinnerDialog" >
+        <item name="android:background">@android:color/white</item>
+        <item name="android:textColor">@color/FOODEMI_COLOR_TEXT_MAIN</item>
+    </style>
+
+    <style name="CustomDtPicker" parent="android:Widget.Material.Light.DatePicker">
+        <item name="colorAccent">@color/FOODEMI_DEFAULT_BACKGROUND</item>
+        <item name="colorPrimary">@color/white</item>
+        <item name="colorPrimaryDark">@color/FOODEMI_COLOR_TEXT_MAIN</item>
+    </style>
+
+    <style name="Widget.Custom.NavigationView" parent="Widget.Design.NavigationView">
+        <item name="itemIconTint">?attr/colorNavigationItem</item>
+        <item name="itemTextColor">?attr/colorNavigationItem</item>
+        <item name="itemBackground">?attr/drawableNavigationItemBackground</item>
+    </style>
+
+    <style name="AppNavigationViewItemTextAppearance" parent="@style/TextAppearance.MaterialComponents.Subtitle2">
+        <item name="android:textSize" tools:ignore="SpUsage">14dp</item>
+        <item name="android:fontFamily">@font/foodemi_bold</item>
+    </style>
+
+    <style name="FOODEMI.DrawerArrow" parent="@style/Widget.AppCompat.DrawerArrowToggle">
+        <item name="spinBars">true</item>
+        <item name="color">@android:color/black</item>
+    </style>
+
+
+
+    <style name="FoodemiButtonStyle" parent="Widget.MaterialComponents.Button.OutlinedButton">
+        <item name="shapeAppearanceOverlay">@style/ButtonShapeAppearance</item>
+    </style>
+
+    <style name="FoodemiButtonStyleNoCurved" parent="Widget.MaterialComponents.Button.OutlinedButton">
+        <item name="shapeAppearanceOverlay">@style/ButtonShapeAppearance_two</item>
+    </style>
+
+    <style name="ButtonShapeAppearance">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeTopLeft">10dp</item>
+        <item name="cornerSizeTopRight">10dp</item>
+        <item name="cornerSizeBottomLeft">10dp</item>
+        <item name="cornerSizeBottomRight">10dp</item>
+    </style>
+
+    <style name="TextLabelDate" parent="TextAppearance.Design.Hint">
+        <item name="android:textSize">@dimen/_8sdp</item>
+    </style>
+
+    <style name="ButtonShapeAppearance_two">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeTopLeft">0dp</item>
+        <item name="cornerSizeTopRight">0dp</item>
+        <item name="cornerSizeBottomLeft">0dp</item>
+        <item name="cornerSizeBottomRight">0dp</item>
+    </style>
+
+    <style name="FOODEMITextAppearanceCaption">
+        <item name="android:textSize"               >@dimen/_8sdp</item>
+    </style>
+
+    <style name="FOODEMITextAppearanceMenuTitle">
+        <item name="android:textSize"               >@dimen/_11sdp</item>
+    </style>
+
+    <style name="FOODEMI.DayNight.Fullscreen" parent="FOODEMI.DayNight">
+        <item name="colorPrimary"               >@color/FOODEMI_DEFAULT_BACKGROUND</item>
+        <item name="colorPrimaryDark"           >@color/colorPrimaryDark</item>
+        <item name="colorAccent"                >@color/colorAccent</item>
+        <item name="android:statusBarColor"     >@color/FOODEMI_DEFAULT_BACKGROUND</item>
+    </style>
+
+    <style name="FOODEMI.DayNight.Transparent" parent="FOODEMI.DayNight">
+        <item name="android:windowIsTranslucent"    >true</item>
+        <item name="android:windowBackground"       >@android:color/transparent</item>
+        <item name="android:windowContentOverlay"   >@null</item>
+        <item name="android:windowNoTitle"          >true</item>
+        <item name="android:windowIsFloating"       >true</item>
+        <item name="android:backgroundDimEnabled"   >false</item>
+    </style>
+
+    <style name="FOODEMI.DayNight.Splash" parent="FOODEMI.DayNight">
+        <item name="colorAccent"                    >@color/FOODEMI_DEFAULT_BACKGROUND</item>
+        <item name="actionMenuTextColor"            >@color/FOODEMI_COLOR_TEXT_NAVIGATION</item>
+        <item name="android:windowBackground"       >@color/FOODEMI_COLOR_BACKGROUND_PRIMARY</item>
+        <item name="android:windowFullscreen"       >true</item>
+        <item name="android:windowIsTranslucent"    >true</item>
+        <item name="windowActionBar"                >false</item>
+        <item name="windowNoTitle"                  >true</item>
+    </style>
+
+    <style name="FOODEMI.DayNight.Camera" parent="FOODEMI.DayNight">
+        <item name="colorAccent"                    >@color/FOODEMI_COLOR_ACCENT_PRIMARY</item>
+        <item name="actionMenuTextColor"            >@color/FOODEMI_COLOR_TEXT_NAVIGATION</item>
+        <item name="android:windowBackground"       >@color/FOODEMI_COLOR_BACKGROUND_PRIMARY</item>
+        <item name="android:windowFullscreen"       >true</item>
+        <item name="android:windowIsTranslucent"    >false</item>
+        <item name="windowActionBar"                >false</item>
+        <item name="windowNoTitle"                  >true</item>
+    </style>
+
+    <style name="FOODEMI.DayNight.ActionBar" parent="FOODEMI.DayNight">
+        <item name="android:textColorPrimary"       >@color/FOODEMI_COLOR_TEXT_MAIN_INVERT</item>
+        <item name="android:textColorSecondary"     >@color/FOODEMI_COLOR_TEXT_MAIN_INVERT</item>
+        <item name="actionMenuTextColor"            >@color/FOODEMI_COLOR_TEXT_MAIN_INVERT</item>
+        <item name="colorControlNormal"             >@color/FOODEMI_COLOR_TEXT_MAIN_INVERT</item>
+        <item name="android:fontFamily"             >@font/foodemi_bold</item>
+        <item name="android:textSize"               >20sp</item>
+    </style>
+
+    <style name="FOODEMI.Dialog.DayNight" parent="Theme.MaterialComponents.Dialog.Alert">
+        <item name="colorPrimary"                   >@color/FOODEMI_COLOR_PRIMARY</item>
+        <item name="colorPrimaryDark"               >@color/FOODEMI_COLOR_SECONDARY</item>
+        <item name="colorAccent"                    >@color/FOODEMI_COLOR_ACCENT_PRIMARY</item>
+        <item name="android:windowNoTitle"          >true</item>
+        <item name="android:windowFrame"            >@null</item>
+        <item name="android:windowIsFloating"       >true</item>
+        <item name="android:windowIsTranslucent"    >true</item>
+        <item name="android:background"             >@color/FOODEMI_COLOR_TRANSPARENT</item>
+        <item name="android:windowBackground"       >@color/FOODEMI_COLOR_TRANSPARENT</item>
+        <item name="android:windowContentOverlay"   >@null</item>
+        <item name="android:backgroundDimEnabled"   >false</item>
+    </style>
+
+    <style name="FOODEMI.Widget.ProgressBar" parent="FOODEMI.DayNight">f
+        <item name="colorAccent"                    >@color/FOODEMI_COLOR_ACCENT_PRIMARY</item>
+    </style>
+
+    <style name="FOODEMI.Widget.Checkbox" parent="FOODEMI.DayNight">
+        <item name="colorAccent"                    >@color/FOODEMI_COLOR_ACCENT_PRIMARY</item>
+    </style>
+
+    <style name="FOODEMI.Widget.EditText" parent="FOODEMI.DayNight">
+        <item name="colorAccent"                    >@color/FOODEMI_COLOR_ACCENT_PRIMARY</item>
+    </style>
+
+    <style name="FOODEMI.Widget.Toolbar" parent="ThemeOverlay.MaterialComponents.Light">
+        <item name="android:fontFamily"             >@font/foodemi_bold</item>
+        <item name="android:textSize"               >20sp</item>
+    </style>
+
+    <style name="FOODEMI.Widget.Switch" parent="FOODEMI.DayNight">
+        <item name="colorControlActivated"          >@color/FOODEMI_COLOR_ACCENT_PRIMARY</item>
+    </style>
+
+    <style name="FOODEMI.Widget.Rating" parent="FOODEMI.DayNight">
+        <item name="colorAccent"                    >@color/FOODEMI_COLOR_RATING</item>
+        <item name="colorControlNormal"             >@color/FOODEMI_COLOR_BACKGROUND_PLACEHOLDER</item>
+        <item name="colorControlActivated"          >@color/FOODEMI_COLOR_RATING</item>
+        <item name="android:progressTint"           >@color/FOODEMI_COLOR_RATING</item>
+    </style>
+
+    <style name="FOODEMI.Widget.TabMenu" parent="Widget.MaterialComponents.TabLayout">
+        <item name="tabIndicatorColor"              >@color/FOODEMI_COLOR_ACCENT_PRIMARY</item>
+        <item name="tabTextAppearance"              >@style/FOODEMI.Widget.TabMenu.TextStyle</item>
+        <item name="tabSelectedTextColor"           >@color/FOODEMI_COLOR_ACCENT_PRIMARY</item>
+        <item name="android:elevation"              >0dp</item>
+    </style>
+
+    <style name="FOODEMI.Dialog.Alert" parent="Theme.MaterialComponents.Dialog.Alert">
+        <item name="android:background"             >#fff</item>
+        <item name="android:textColorPrimary"       >@color/FOODEMI_COLOR_TEXT_MAIN</item>
+        <item name="android:textColor"              >@color/FOODEMI_COLOR_TEXT_NAVIGATION</item>
+
+    </style>
+
+    <style name="FOODEMI.Dialog.Date" parent="Theme.MaterialComponents.Light.Dialog">
+        <item name="windowActionBar"                >false</item>
+        <item name="windowNoTitle"                  >true</item>
+        <item name="colorControlNormal"             >@color/FOODEMI_COLOR_LIGHTER</item>
+        <item name="colorControlActivated"          >@color/FOODEMI_COLOR_TEXT_NEGATIVE</item>
+        <item name="android:textColorPrimary"       >@color/FOODEMI_DEFAULT_BACKGROUND</item>
+        <item name="colorPrimaryDark"               >@color/FOODEMI_COLOR_TEXT_MAIN</item>
+        <item name="colorAccent"                    >@color/FOODEMI_DEFAULT_BACKGROUND</item>
+        <item name="materialButtonStyle"            >@style/Widget.MaterialComponents.Button.TextButton</item>
+    </style>
+
+    <style name="FOODEMI.Widget.TabMenu.TextStyle" parent="TextAppearance.Design.Tab">
+        <item name="android:textColor"              >@color/FOODEMI_COLOR_TEXT_SECONDARY_INVERT</item>
+        <item name="android:fontFamily"             >@font/foodemi_bold</item>
+        <item name="android:textStyle"              >bold</item>
+        <item name="textAllCaps"                    >false</item>
+        <item name="android:textAllCaps"            >false</item>
+    </style>
+
+    <style name="FOODEMITextAppearanceHeadlineBig">
+        <item name="android:textSize" tools:ignore="SpUsage">26dp</item>
+    </style>
+
+    <style name="FOODEMITextAppearanceHeadline">
+        <item name="android:textSize" tools:ignore="SpUsage">20dp</item>
+    </style>
+
+    <style name="FOODEMITextAppearanceTitle">
+        <item name="android:textSize" tools:ignore="SpUsage">18dp</item>
+    </style>
+
+    <style name="FOODEMITextAppearanceSubTitle">
+        <item name="android:textSize" tools:ignore="SpUsage">16dp</item>
+    </style>
+
+    <style name="FOODEMITextAppearanceHeading">
+        <item name="android:textSize" tools:ignore="SpUsage">14dp</item>
+    </style>
+
+    <style name="FOODEMITextAppearanceBody">
+        <item name="android:textSize" tools:ignore="SpUsage">12dp</item>
+    </style>
+
+    <style name="FOODEMITextAppearanceBodyMedium">
+        <item name="android:textSize" tools:ignore="SpUsage">13dp</item>
+    </style>
+
+    <style name="FOODEMITabAppearance" parent="Widget.MaterialComponents.TabLayout">
+        <item name="tabTextAppearance">@style/FOODEMITextAppearance.App.Button</item>
+    </style>
+
+    <style name="FOODEMITextAppearance.App.Button" parent="TextAppearance.MaterialComponents.Button">
+        <item name="fontFamily">@font/foodemi_bold</item>
+        <item name="android:fontFamily">@font/foodemi_bold</item>
+        <item name="android:textSize" tools:ignore="SpUsage">13dp</item>
+    </style>
+
+    <style name="AppBottomSheetDialogTheme" parent="Theme.MaterialComponents.Light.BottomSheetDialog">
+        <item name="bottomSheetStyle"               >@style/AppModalCornerStyle</item>
+        <item name="android:colorEdgeEffect"        >@color/FOODEMI_COLOR_PRIMARY</item>
+    </style>
+
+    <style name="AppBottomSnackBar" parent="Theme.MaterialComponents.Light.BottomSheetDialog">
+        <item name="bottomSheetStyle"               >@style/AppModalTransparentStyle</item>
+        <item name="android:backgroundDimEnabled"   >false</item>
+    </style>
+
+    <style name="AppModalCornerStyle" parent="Widget.MaterialComponents.BottomSheet.Modal">
+        <item name="android:background"             >@drawable/sp_widget_dialog_bottom</item>
+        <item name="shapeAppearanceOverlay"         >@style/AppShapeAppearanceLarge</item>
+    </style>
+
+    <style name="AppModalTransparentStyle" parent="Widget.Design.BottomSheet.Modal">
+        <item name="android:background"             >@android:color/transparent</item>
+    </style>
+
+    <style name="AppShapeAppearanceLarge" parent="ShapeAppearance.MaterialComponents.SmallComponent">
+        <item name="cornerFamilyTopRight"           >rounded</item>
+        <item name="cornerFamilyTopLeft"            >rounded</item>
+        <item name="cornerSizeTopLeft"              >@dimen/_22sdp</item>
+        <item name="cornerSizeTopRight"             >@dimen/_22sdp</item>
+        <item name="cornerSizeBottomRight"          >0dp</item>
+        <item name="cornerSizeBottomLeft"           >0dp</item>
+    </style>
+
+</resources>

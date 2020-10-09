@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorAccent"                                  >#FF0000</color>
+    <color name="FOODEMI_COLOR_PRIMARY"                        >#FFFFFF</color>
+    <color name="FOODEMI_COLOR_PRIMARY_INVERT"                 >#DEFFFFFF</color>
+    <color name="FOODEMI_COLOR_SECONDARY"                      >#0DB1F4</color>
+    <color name="FOODEMI_COLOR_LIGHTER"                        >#132C47</color>
+    <color name="FOODEMI_COLOR_GOLD"                           >#FFEB3B</color>
+    <color name="FOODEMI_COLOR_ACCENT_PRIMARY"                 >#FF0000</color>
+    <color name="FOODEMI_COLOR_ACCENT_SECONDARY"               >#00B2FF</color>
+    <color name="FOODEMI_COLOR_TRANSPARENT"                    >#00000000</color>
+
+    <color name="FOODEMI_COLOR_BACKGROUND_PRIMARY"             >#FFFFFF</color>
+    <color name="FOODEMI_COLOR_BACKGROUND_SECONDARY"           >#F2F2F2</color>
+    <color name="FOODEMI_COLOR_BACKGROUND_OVERLAY"             >#38000000</color>
+    <color name="FOODEMI_COLOR_BACKGROUND_GREY"                >#666666</color>
+    <color name="FOODEMI_COLOR_BACKGROUND_SOFT_GREY"           >#e7e7f0</color>
+    <color name="FOODEMI_COLOR_BACKGROUND_SOLID_GREY"          >#BEBEBE</color>
+    <color name="FOODEMI_COLOR_BACKGROUND_HIGHLIGHT"           >#08000000</color>
+    <color name="FOODEMI_COLOR_BACKGROUND_GALLERY"             >#000</color>
+    <color name="FOODEMI_COLOR_BACKGROUND_PLACEHOLDER"         >#FFE7E7E7</color>
+    <color name="FOODEMI_COLOR_BACKGROUND_PLACEHOLDER_INVERT"  >#48FFFFFF</color>
+    <color name="FOODEMI_COLOR_BACKGROUND_TAGGING"             >#E0E0E0</color>
+    <color name="FOODEMI_COLOR_NEUTRAL_ACTIVE"                 >#C2C2C2</color>
+    <color name="FOODEMI_COLOR_BACKGROUND_HALF"                >#9CA4AC</color>
+    <color name="FOODEMI_COLOR_BACKGROUND_WHITE"               >#F7FAFF</color>
+    <color name="FOODEMI_COLOR_BACKGROUND_GREY_UNDERLINE"      >#F0F0F7</color>
+    <color name="FOODEMI_COLOR_BACKGROUND_GREY_DIVIDER"        >#F5F5F8</color>
+    <color name="FOODEMI_COLOR_BACKGROUND_LIGHT_GREY"          >#F8F8FC</color>
+    <color name="FOODEMI_COLOR_DISABLED_GREY"                  >#D4D4DA</color>
+
+    <color name="FOODEMI_COLOR_TEXT_NAVIGATION"                >#FF001122</color>
+    <color name="FOODEMI_COLOR_TEXT_NAVIGATION_INVERT"         >#FFFFFFFF</color>
+    <color name="FOODEMI_COLOR_TEXT_PRIMARY"                   >#DE0A0B09</color>
+    <color name="FOODEMI_COLOR_TEXT_ACCENT"                    >#DEE3352B</color>
+    <color name="FOODEMI_COLOR_TEXT_MAIN"                      >#FF001122</color>
+    <color name="FOODEMI_COLOR_TEXT_SECONDARY"                 >#D9001122</color>
+    <color name="FOODEMI_COLOR_TEXT_THIRD"                     >#0f2236</color>
+    <color name="FOODEMI_COLOR_TEXT_FOURTH"                    >#585858</color>
+    <color name="FOODEMI_COLOR_TEXT_TENARY"                    >#4D000000</color>
+    <color name="FOODEMI_COLOR_TEXT_GREY"                      >#8E8E93</color>
+    <color name="FOODEMI_COLOR_TEXT_MAIN_INVERT"               >#DEFFFFFF</color>
+    <color name="FOODEMI_COLOR_TEXT_SECONDARY_INVERT"          >#8AFFFFFF</color>
+    <color name="FOODEMI_COLOR_TEXT_NEGATIVE"                  >#DEE3352B</color>
+    <color name="FOODEMI_COLOR_TEXT_POSITIVE"                  >#DE31A745</color>
+    <color name="FOODEMI_COLOR_TEXT_HINT"                      >#4D000000</color>
+    <color name="FOODEMI_COLOR_TEXT_DIVIDER"                   >#0D000000</color>
+    <color name="FOODEMI_COLOR_TEXT_DIVIDER_GUIDANCE"          >#F1F1F8</color>
+    <color name="FOODEMI_COLOR_TEXT_DIVIDER_SECONDARY"         >#e7e7f0</color>
+    <color name="FOODEMI_COLOR_TEXT_DIVIDER_INVERT"            >#DEFFFFFF</color>
+    <color name="FOODEMI_COLOR_TEXT_BUTTON"                    >#DEFFFFFF</color>
+    <color name="FOODEMI_COLOR_TEXT_CAPTION"                   >#8E8E93</color>
+    <color name="FOODEMI_COLOR_TEXT_DENOM_PRICE"               >#F04646</color>
+    <color name="FOODEMI_COLOR_RATING"                         >#F5A623</color>
+    <color name="FOODEMI_COLOR_STEPPER_LINE"                   >#d8d8d8</color>
+    <color name="FOODEMI_COLOR_STEPPER_POSITIVE"               >#FF0000</color>
+    <color name="FOODEMI_COLOR_STEPPER_NEGATIVE"               >#d8d8d8</color>
+    <color name="FOODEMI_COLOR_PRIMARY_SOF_LINE"               >#4794ef</color>
+    <color name="FOODEMI_COLOR_PRIMARY_SOF"                    >#1c9bd1</color>
+    <color name="FOODEMI_COLOR_DIM_BACKROUND"                  >#B2000000</color>
+    <color name="FOODEMI_COLOR_RFID_BACKROUND"                 >#f8f8fc</color>
+    <color name="FOODEMI_COLOR_BORDER_PINK"                    >#ffcfc0</color>
+    <color name="FOODEMI_COLOR_PINK"                           >#ffefef</color>
+
+    <color name="FOODEMI_DEFAULT_BACKGROUND">#FFBD59</color>
+    <color name="white">#ffff</color>
+
+    <color name="iOS_progress_default_color">#b1000000</color>
+    <color name="iOS_progress_color_grey">#449E9E9E</color>
+</resources>

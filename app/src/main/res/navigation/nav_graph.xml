@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/pickTable">
+
+    <fragment
+        android:id="@+id/pickTable"
+        android:name="com.foodemi.foodemimenu.ui.view.feature.fragment.picktable.FragmentPickTable"
+        tools:layout="@layout/fragment_pick_table">
+
+        <action
+            android:id="@+id/addCustomer_to_list_customer"
+            app:destination="@id/menuDetails"
+            app:popUpTo="@+id/menuList"
+            app:popUpToInclusive="true"/>
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/menuList"
+        android:name="com.foodemi.foodemimenu.ui.view.feature.fragment.menu.menulist.FragmentMenuList"
+        tools:layout="@layout/fragment_menu_list">
+
+        <action
+            android:id="@+id/menulist_to_menu_details"
+            app:destination="@id/menuDetails"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/menuDetails"
+        android:name="com.foodemi.foodemimenu.ui.view.feature.fragment.menu.menudetail.FragmentMenuDetail"
+        tools:layout="@layout/fragment_menu_detail">
+
+        <action
+            android:id="@+id/menu_details_back_to_menu_list"
+            app:destination="@id/menuList"
+            app:popUpTo="@+id/menuDetails"
+            app:popUpToInclusive="true"/>
+
+    </fragment>
+
+</navigation>
