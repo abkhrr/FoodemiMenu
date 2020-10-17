@@ -23,14 +23,15 @@ import com.foodemi.foodemimenu.ui.viewmodel.factory.ViewModelFactory
 import com.foodemi.foodemimenu.ui.viewmodel.feature.fragment.menu.menulist.MenuListViewModel
 import com.foodemi.foodemimenu.utils.constant.Const
 import kotlinx.android.synthetic.main.fragment_menu_list.*
+import okhttp3.internal.notifyAll
 import javax.inject.Inject
 
 
 class FragmentMenuList : CoreFragment<FragmentMenuListBinding, MenuListViewModel>(),
     MenuNavigation, AdapterMenuCollection.MenuItemListener {
 
-    val listToCart: MutableList<ModelMenuSectioned.MenuFoodemi>     = mutableListOf()
-    val totalListItems: MutableList<ModelMenuSectioned.MenuFoodemi> = mutableListOf()
+    private val listToCart: MutableList<ModelMenuSectioned.MenuFoodemi>     = mutableListOf()
+    private val totalListItems: MutableList<ModelMenuSectioned.MenuFoodemi> = mutableListOf()
 
     @Inject
     lateinit var factory: ViewModelFactory
@@ -127,22 +128,23 @@ class FragmentMenuList : CoreFragment<FragmentMenuListBinding, MenuListViewModel
             R.anim.button_menu_list_animation_hide
         )
 
-        listToCart.add(menu)
+        val targetItem = listToCart.singleOrNull {
+            it.id == menu.id
+        }
 
-        for (i in 0 until listToCart.size){
-
-            if (isAlreadyInCart(menu.id)){
-                if (menu.id == listToCart[i].id){
-                    listToCart[i].menuQty = menu.menuQty.plus(1)
-                    val itemsPrice = listToCart[i].menuPrice + menu.menuPrice
-                    listToCart[i].menuPrice = itemsPrice.toInt()
-
-                    Log.e("MENU PRICE", listToCart[i].menuPrice.toString())
+        menu.let {
+            if (isAlreadyInCart(it.id)){
+                menu.menuPrice = menu.menuPrice
+                for (i in 0 until listToCart.size){
+                    if (listToCart[i].id == it.id){
+                        listToCart[i].menuQty++
+                        val price = listToCart[i].menuPrice * listToCart[i].menuQty
+                        listToCart[i].menuPrice = price
+                    }
                 }
             }
             else {
                 listToCart.add(menu)
-                Log.e("MENU PRICE 2", listToCart.toString())
             }
 
             totalListItems.add(menu)
@@ -162,12 +164,13 @@ class FragmentMenuList : CoreFragment<FragmentMenuListBinding, MenuListViewModel
                     view_text_totalItems_menu_list.text  = "$grandTotalItem item"
                 }
 
-                var total = 0
-                total += listToCart[i].menuPrice
-                val readableValue   = PriceCheckerValue().checkIntValueToString(total.toString())
-                view_text_total_price_menu_list.text = readableValue
+                for (i in 0 until listToCart.size){
+                    var total = 0
+                    total += listToCart[i].menuPrice
+                    val readableValue   = PriceCheckerValue().checkIntValueToString(total.toString())
+                    view_text_total_price_menu_list.text = readableValue
+                }
             }
-
         }
     }
 

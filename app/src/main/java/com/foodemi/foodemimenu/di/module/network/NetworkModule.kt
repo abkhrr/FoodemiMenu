@@ -2,8 +2,12 @@ package com.foodemi.foodemimenu.di.module.network
 
 import android.app.Application
 import android.content.Context
+import androidx.room.Room
 import com.foodemi.foodemimenu.BuildConfig
+import com.foodemi.foodemimenu.data.source.local.db.AppDatabase
 import com.foodemi.foodemimenu.data.source.remote.network.ApiService
+import com.foodemi.foodemimenu.di.qualifier.DBQualifier
+import com.foodemi.foodemimenu.utils.constant.Const
 import com.google.gson.Gson
 import dagger.Module
 import dagger.Provides
@@ -61,18 +65,18 @@ class NetworkModule {
         return retrofit.create(ApiService::class.java)
     }
 
-    //@Provides
-    //@DBQualifier
-    //fun provideDatabaseName(): String {
-    //    return Const.DB_NAME
-    //}
+    @Provides
+    @DBQualifier
+    fun provideDatabaseName(): String {
+        return Const.DB_NAME
+    }
 
-    //@Provides
-    //@Singleton
-    //fun provideAppDatabase(@DBQualifier dbName: String, context: Context): AppDatabase {
-    //    return Room.databaseBuilder(context, AppDatabase::class.java, dbName)
-    //        .fallbackToDestructiveMigration().build()
-    //}
+    @Provides
+    @Singleton
+    fun provideAppDatabase(@DBQualifier dbName: String, context: Context): AppDatabase {
+        return Room.databaseBuilder(context, AppDatabase::class.java, dbName)
+            .fallbackToDestructiveMigration().build()
+    }
 
     //@Provides
     //@PreferenceQualifier
