@@ -2,4 +2,19 @@
     <string name="app_name">Foodemi Menu</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="foodemi_pick_table">Halo, Silahkan pilih nomor meja dahulu ya, Pastikan nomor meja sesuai dengan yang anda duduki saat ini terimakasih</string>
+
+    <string-array name="TableNumber">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+    </string-array>
+
 </resources>

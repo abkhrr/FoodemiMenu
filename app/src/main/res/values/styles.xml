@@ -4,7 +4,7 @@
         <item name="colorPrimary"                     >@color/FOODEMI_COLOR_PRIMARY</item>
         <item name="colorPrimaryDark"                 >@color/FOODEMI_COLOR_PRIMARY</item>
         <item name="colorAccent"                      >@color/FOODEMI_COLOR_PRIMARY_INVERT</item>
-        <item name="android:statusBarColor"           >@color/white</item>
+        <item name="android:statusBarColor"           >@color/FOODEMI_DEFAULT_BACKGROUND</item>
         <item name="windowNoTitle"                    >true</item>
         <item name="android:windowBackground"         >@color/FOODEMI_COLOR_BACKGROUND_PRIMARY</item>
         <item name="android:colorBackground"          >@color/FOODEMI_COLOR_BACKGROUND_PRIMARY</item>

@@ -2,6 +2,9 @@ package com.foodemi.foodemimenu.ui.view.base
 
 import android.content.Context
 import android.os.Bundle
+import android.os.PersistableBundle
+import android.util.AttributeSet
+import android.view.View
 import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil

@@ -11,6 +11,9 @@ class ModelMenu{
 
 
     data class FoodemiMenu(
+        @SerializedName("_id")
+        val id: String,
+
         @SerializedName("menuName")
         val menuName: String,
 

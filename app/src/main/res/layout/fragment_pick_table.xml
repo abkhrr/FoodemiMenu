@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
         <variable
@@ -7,19 +10,97 @@
             type="com.foodemi.foodemimenu.ui.viewmodel.feature.fragment.picktable.PickTableViewModel" />
     </data>
 
-    <RelativeLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
+        android:background="#272329"
         android:layout_height="match_parent"
+        android:fillViewport="true"
         tools:context=".ui.view.feature.fragment.picktable.FragmentPickTable">
 
-        <!-- TODO: Update blank fragment layout -->
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="@string/hello_blank_fragment" />
 
-    </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/FOODEMI_DEFAULT_BACKGROUND"
+            android:layout_marginBottom="10dp">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/logoFoodemiPickTable"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/ic_logo_foodemi"
+                android:padding="20dp"
+                android:scaleType="fitCenter"/>
+
+            <RelativeLayout
+                android:layout_below="@+id/logoFoodemiPickTable"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#272329"
+                android:padding="20dp">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/textTitlePickTable"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="center"
+                    android:layout_centerHorizontal="true"
+                    android:text="@string/foodemi_pick_table"
+                    android:textColor="@color/white"
+                    android:fontFamily="sans-serif-black"
+                    android:maxEms="20"
+                    android:layout_marginTop="20dp"
+                    android:textSize="16dp"
+                    tools:ignore="HardcodedText,SpUsage" />
+
+                <androidx.appcompat.widget.AppCompatAutoCompleteTextView
+                    android:id="@+id/view_dropdown_picktable"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/textTitlePickTable"
+                    android:background="@drawable/ic_bg_button"
+                    android:hint="Pilih Nomor Meja"
+                    android:textAlignment="center"
+                    android:maxLines="1"
+                    android:clickable="true"
+                    android:focusable="false"
+                    android:dropDownVerticalOffset="10dp"
+                    android:dropDownHeight="180dp"
+                    android:dropDownAnchor="@id/view_dropdown_picktable"
+                    android:inputType="none"
+                    android:cursorVisible="false"
+                    android:layout_marginBottom="100dp"
+                    android:padding="10dp"
+                    android:drawableEnd="@drawable/ic_baseline_arrow_drop_down_24"
+                    android:layout_marginTop="50dp"/>
+
+            </RelativeLayout>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/view_btn_action_to_menu_list"
+                style="@style/Base.TextAppearance.AppCompat.Body1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/FOODEMI_PADDING_DEXTAR"
+                android:layout_marginEnd="@dimen/FOODEMI_PADDING_DEXTAR"
+                android:layout_marginBottom="30dp"
+                android:backgroundTint="@color/FOODEMI_DEFAULT_BACKGROUND"
+                android:elevation="@dimen/FOODEMI_ELEVATION_BUTTON"
+                android:fontFamily="@font/foodemi_bold"
+                android:text="PILIH MENU"
+                android:insetBottom="0dp"
+                android:insetTop="0dp"
+                android:insetLeft="0dp"
+                android:insetRight="0dp"
+                android:textAlignment="center"
+                android:layout_alignParentBottom="true"
+                android:textAllCaps="false"
+                android:textColor="@color/FOODEMI_COLOR_TEXT_MAIN_INVERT"
+                tools:ignore="UnusedAttribute" />
+
+        </RelativeLayout>
+
+
+    </androidx.core.widget.NestedScrollView>
 
 </layout>

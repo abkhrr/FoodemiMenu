@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="menu"
+            type="com.foodemi.foodemimenu.data.model.response.ModelMenuSectioned.SectionMenu" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:background="#FAFAFA"
+        android:layout_height="wrap_content">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/holder_menu_list_main_layout"
+            android:layout_width="match_parent"
+            android:layout_marginTop="6dp"
+            android:padding="10dp"
+            app:cardElevation="0dp"
+            app:cardPreventCornerOverlap="false"
+            android:layout_height="wrap_content">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/view_text_menu_category_header"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:fontFamily="@font/roboto_black"
+                    android:padding="10dp"
+                    android:text="@{menu.menuCategory}"
+                    android:textColor="@color/FOODEMI_COLOR_TEXT_MAIN"
+                    android:textSize="15dp"
+                    tools:ignore="SpUsage"
+                    tools:text="Satay" />
+
+                <View
+                    android:id="@+id/divider_ly_list_menu"
+                    android:layout_width="match_parent"
+                    android:layout_height="3dp"
+                    android:visibility="visible"
+                    android:background="@drawable/dotted_gap_view"
+                    android:layout_below="@+id/view_text_menu_category_header"/>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvListMenu"
+                    tools:listitem="@layout/view_holder_item_collection_menu_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/divider_ly_list_menu"
+                    android:overScrollMode="never"
+                    app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+            </RelativeLayout>
+
+        </androidx.cardview.widget.CardView>
+
+    </RelativeLayout>
+
+</layout>

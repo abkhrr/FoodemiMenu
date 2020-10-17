@@ -12,9 +12,9 @@
         tools:layout="@layout/fragment_pick_table">
 
         <action
-            android:id="@+id/addCustomer_to_list_customer"
-            app:destination="@id/menuDetails"
-            app:popUpTo="@+id/menuList"
+            android:id="@+id/pickTable_to_menu_list"
+            app:destination="@id/menuList"
+            app:popUpTo="@+id/pickTable"
             app:popUpToInclusive="true"/>
 
     </fragment>
