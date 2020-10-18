@@ -64,6 +64,7 @@
 
     <color name="FOODEMI_DEFAULT_BACKGROUND">#FFBD59</color>
     <color name="white">#ffff</color>
+    <color name="sbColorTransparent">@android:color/transparent</color>
 
     <color name="iOS_progress_default_color">#b1000000</color>
     <color name="iOS_progress_color_grey">#449E9E9E</color>

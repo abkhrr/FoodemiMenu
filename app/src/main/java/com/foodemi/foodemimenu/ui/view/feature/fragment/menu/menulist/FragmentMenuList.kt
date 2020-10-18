@@ -3,10 +3,12 @@ package com.foodemi.foodemimenu.ui.view.feature.fragment.menu.menulist
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
+import android.view.Gravity
 import android.view.View
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import android.widget.Toast
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -19,19 +21,22 @@ import com.foodemi.foodemimenu.ui.view.adapter.AdapterMenuCollection
 import com.foodemi.foodemimenu.ui.view.base.CoreFragment
 import com.foodemi.foodemimenu.ui.view.widget.nestedMenuList.MenuListSimple
 import com.foodemi.foodemimenu.ui.view.widget.price.PriceCheckerValue
+import com.foodemi.foodemimenu.ui.view.widget.snackBar.SnackBarHelper
 import com.foodemi.foodemimenu.ui.viewmodel.factory.ViewModelFactory
 import com.foodemi.foodemimenu.ui.viewmodel.feature.fragment.menu.menulist.MenuListViewModel
 import com.foodemi.foodemimenu.utils.constant.Const
+import com.google.android.material.snackbar.Snackbar
+import es.dmoral.toasty.Toasty
 import kotlinx.android.synthetic.main.fragment_menu_list.*
-import okhttp3.internal.notifyAll
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 
+@Suppress("DEPRECATION")
 class FragmentMenuList : CoreFragment<FragmentMenuListBinding, MenuListViewModel>(),
     MenuNavigation, AdapterMenuCollection.MenuItemListener {
-
-    private val listToCart: MutableList<ModelMenuSectioned.MenuFoodemi>     = mutableListOf()
-    private val totalListItems: MutableList<ModelMenuSectioned.MenuFoodemi> = mutableListOf()
 
     @Inject
     lateinit var factory: ViewModelFactory
@@ -57,6 +62,11 @@ class FragmentMenuList : CoreFragment<FragmentMenuListBinding, MenuListViewModel
 
     private val adapter     = AdapterMenuCollection()
 
+    private val listMenu: MutableList<ModelMenuSectioned.MenuFoodemi>     = mutableListOf()
+
+    private val listMenuAll        = ArrayList<ModelMenuSectioned.MenuFoodemi>()
+    private val listMenuToSubmit   = ArrayList<ModelMenuSectioned.MenuFoodemi>()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         menuListViewModel?.setNavigator(this)
@@ -71,25 +81,6 @@ class FragmentMenuList : CoreFragment<FragmentMenuListBinding, MenuListViewModel
         setup()
     }
 
-    private fun addDefaultItems(){
-        val item = ModelMenuSectioned.MenuFoodemi(
-            id = "",
-            menuCategory = "",
-            menuName = "0",
-            menuImage = "",
-            menuPrice = 0,
-            menuDiscount = 0,
-            menuQty = 0,
-            menuDesc = "",
-            isAvailable = false,
-            isRecommended = false,
-            menuPromo = "",
-            isPromo = false,
-            isDiscount = false,
-            discountPrice = 0
-        )
-        listToCart.add(0, item)
-    }
 
     override fun handleMenuError(message: String?) {
         Log.e("Error_Message", message.toString())
@@ -99,9 +90,9 @@ class FragmentMenuList : CoreFragment<FragmentMenuListBinding, MenuListViewModel
         return MenuListSimple(menuList, adapter).setAllList()
     }
 
-    private fun setup(){
+    private fun setup() {
         initRecyclerView()
-        setupButton()
+        showVisibility()
     }
 
     private fun initRecyclerView(){
@@ -116,83 +107,88 @@ class FragmentMenuList : CoreFragment<FragmentMenuListBinding, MenuListViewModel
         getViewDataBinding().viewMenuListCollectionRV.itemAnimator = null
     }
 
-    @SuppressLint("SetTextI18n")
     override fun onButtonMenuClicked(menu: ModelMenuSectioned.MenuFoodemi) {
+        CoroutineScope(Dispatchers.Main).launch {
 
-        val slideUp: Animation = AnimationUtils.loadAnimation(
-            context,
-            R.anim.button_menu_list_animation_show
-        )
-        val slideDown: Animation = AnimationUtils.loadAnimation(
-            context,
-            R.anim.button_menu_list_animation_hide
-        )
+            val slideUp: Animation = AnimationUtils.loadAnimation(
+                context,
+                R.anim.button_menu_list_animation_show
+            )
 
-        val targetItem = listToCart.singleOrNull {
-            it.id == menu.id
-        }
-
-        menu.let {
-            if (isAlreadyInCart(it.id)){
-                menu.menuPrice = menu.menuPrice
-                for (i in 0 until listToCart.size){
-                    if (listToCart[i].id == it.id){
-                        listToCart[i].menuQty++
-                        val price = listToCart[i].menuPrice * listToCart[i].menuQty
-                        listToCart[i].menuPrice = price
-                    }
-                }
-            }
-            else {
-                listToCart.add(menu)
-            }
-
-            totalListItems.add(menu)
-
-            if (totalListItems.isEmpty() && listToCart.isEmpty()){
-                //view_btn_cart.startAnimation(slideDown)
-                view_btn_cart.visibility = View.GONE
-            } else {
+            if (listMenu.size >= 0){
                 view_btn_cart.startAnimation(slideUp)
                 view_btn_cart.visibility = View.VISIBLE
-
-                val grandTotalItem = totalListItems.size
-                if (grandTotalItem > 1){
-                    view_text_totalItems_menu_list.text  = "$grandTotalItem items"
-                }
-                else {
-                    view_text_totalItems_menu_list.text  = "$grandTotalItem item"
-                }
-
-                for (i in 0 until listToCart.size){
-                    var total = 0
-                    total += listToCart[i].menuPrice
-                    val readableValue   = PriceCheckerValue().checkIntValueToString(total.toString())
-                    view_text_total_price_menu_list.text = readableValue
-                }
             }
+            else {
+                view_btn_cart.visibility = View.GONE
+            }
+
+            menuListViewModel?.updateItems(menu)
+            showSnackbarCustom("berhasil tambah menu : ${menu.menuName}, x${menu.itemQuantity}")
+
+
+            listMenu.add(menu)
+            listMenuAll.addAll(listMenu)
+            mapProductWithCart()
         }
     }
 
-    private fun setupButton(){
-        view_btn_cart.setOnClickListener {
-            Log.e("LIST CARD", listToCart.toString())
-            Log.e("LIST CARD 2", totalListItems.toString())
+    private fun setMyCustomToast(message: String){
+        val toast = Toasty.custom(
+            requireContext(),
+            message,
+            R.drawable.background_ios_alert,
+            R.color.white,
+            Toast.LENGTH_SHORT,
+            false,
+            true
+        )
+        toast.setGravity(Gravity.BOTTOM, 0, -10000)
+        return toast.show()
+    }
 
-            Log.e("LIST CARD SIZE", listToCart.size.toString())
-            Log.e("LIST CARD 2 SIZE", totalListItems.size.toString())
+    private fun showSnackbarCustom(message: String) {
+        val snack = Snackbar.make(requireView(), message, Snackbar.LENGTH_SHORT)
+        SnackBarHelper.configSnackbar(requireContext(), snack)
+        snack.show()
+    }
+
+    private fun mapProductWithCart(){
+        CoroutineScope(Dispatchers.Main).launch{
+            val menuMap = menuListViewModel?.mapWithCart(listMenuAll)
+            listMenuToSubmit.addAll(menuMap!!)
         }
     }
 
-    private fun isAlreadyInCart(targetItemId: String): Boolean {
-        var isAlreadyInCart = false
-        for (i in 0 until listToCart.size) {
-            if (targetItemId == listToCart[i].id) {
-                isAlreadyInCart = true
-                break
-            }
-        }
-        return isAlreadyInCart
+    @SuppressLint("SetTextI18n")
+    private fun showVisibility(){
+        menuListViewModel?.subscribeTotal()?.observe(
+            this.viewLifecycleOwner,
+            Observer { cartTotal ->
+                val readableValue =
+                    PriceCheckerValue().checkIntValueToString(cartTotal.totalAmount.toString())
+                view_text_total_price_menu_list.text = readableValue
+
+                if (listMenu.size > 2) {
+                    view_text_totalItems_menu_list.text = "${listMenu.size} items"
+                } else {
+                    view_text_totalItems_menu_list.text = "${listMenu.size} items"
+                }
+
+                val lt = menuListViewModel?.getAllCartItem()
+
+                view_btn_cart.setOnClickListener {
+                    Log.e("MENU_PRICE_TOT", cartTotal.totalAmount.toString())
+                    Log.e("MENU_ITEM_TOT", cartTotal.totalItems.toString())
+                    Log.e("MENU_ITEM", lt.toString())
+                    Log.e("MENU_TOTAL", cartTotal.toString())
+                }
+            })
+    }
+
+    override fun onResume() {
+        super.onResume()
+        mapProductWithCart()
     }
 
 }

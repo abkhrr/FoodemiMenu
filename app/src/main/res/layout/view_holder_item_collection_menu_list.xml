@@ -10,7 +10,7 @@
 
         <variable
             name="menu"
-            type="com.foodemi.foodemimenu.ui.viewmodel.items.menu.MenuListViewModel" />
+            type="com.foodemi.foodemimenu.ui.viewmodel.items.menu.MenuListItemViewModel" />
 
     </data>
 
