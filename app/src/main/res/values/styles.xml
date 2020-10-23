@@ -246,31 +246,35 @@
     </style>
 
     <style name="FOODEMITextAppearanceHeadlineBig">
-        <item name="android:textSize" tools:ignore="SpUsage">26dp</item>
+        <item name="android:textSize" tools:ignore="SpUsage">26sp</item>
     </style>
 
     <style name="FOODEMITextAppearanceHeadline">
-        <item name="android:textSize" tools:ignore="SpUsage">20dp</item>
+        <item name="android:textSize" tools:ignore="SpUsage">20sp</item>
     </style>
 
     <style name="FOODEMITextAppearanceTitle">
-        <item name="android:textSize" tools:ignore="SpUsage">18dp</item>
+        <item name="android:textSize" tools:ignore="SpUsage">16sp</item>
     </style>
 
     <style name="FOODEMITextAppearanceSubTitle">
-        <item name="android:textSize" tools:ignore="SpUsage">16dp</item>
+        <item name="android:textSize" tools:ignore="SpUsage">14sp</item>
     </style>
 
     <style name="FOODEMITextAppearanceHeading">
-        <item name="android:textSize" tools:ignore="SpUsage">14dp</item>
+        <item name="android:textSize" tools:ignore="SpUsage">14sp</item>
     </style>
 
     <style name="FOODEMITextAppearanceBody">
-        <item name="android:textSize" tools:ignore="SpUsage">12dp</item>
+        <item name="android:textSize" tools:ignore="SpUsage">12sp</item>
+    </style>
+
+    <style name="FOODEMITextAppearanceBodySpinner">
+        <item name="android:textSize" tools:ignore="SpUsage">20sp</item>
     </style>
 
     <style name="FOODEMITextAppearanceBodyMedium">
-        <item name="android:textSize" tools:ignore="SpUsage">13dp</item>
+        <item name="android:textSize" tools:ignore="SpUsage">15sp</item>
     </style>
 
     <style name="FOODEMITabAppearance" parent="Widget.MaterialComponents.TabLayout">

@@ -62,7 +62,7 @@ class FragmentPickTable : CoreFragment<FragmentPickTableBinding, PickTableViewMo
 
             val nomorMejaAdapter = ArrayAdapter(
                 requireContext(),
-                android.R.layout.select_dialog_item,
+                R.layout.view_spinner_item,
                 tableNum
             )
 

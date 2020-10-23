@@ -12,6 +12,7 @@ import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
+import com.foodemi.foodemimenu.R
 import dagger.android.support.AndroidSupportInjection
 
 abstract class CoreFragment<T : ViewDataBinding, V : BaseViewModel<*>> : Fragment() {

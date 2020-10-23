@@ -2,6 +2,7 @@ package com.foodemi.foodemimenu.ui.view.feature.fragment.state.success
 
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import com.foodemi.foodemimenu.BR
 import androidx.lifecycle.ViewModelProvider
 import com.foodemi.foodemimenu.R
@@ -40,6 +41,19 @@ class FragmentOrderSuccess : CoreFragment<FragmentOrderSuccessBinding, OrderSucc
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         orderSuccessViewModel?.setNavigator(this)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        setButtonNavigate()
+    }
+
+    private fun setButtonNavigate(){
+        with(getViewDataBinding()){
+            viewBtnActionToFeedback.setOnClickListener {
+                getNavController().navigate(R.id.order_success_to_feedback)
+            }
+        }
     }
 
     override fun handleError(message: String?) {

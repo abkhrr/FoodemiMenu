@@ -32,6 +32,13 @@
                 android:layout_height="?attr/actionBarSize"
                 android:background="@color/FOODEMI_DEFAULT_BACKGROUND">
 
+               <androidx.appcompat.widget.AppCompatImageButton
+                   android:id="@+id/actionVarBackBtn"
+                   android:layout_width="24dp"
+                   android:layout_height="24dp"
+                   android:visibility="gone"
+                   android:background="@drawable/ic_arrow_back_black_24dp"/>
+
                <androidx.appcompat.widget.AppCompatTextView
                    android:id="@+id/view_toolbar_title"
                    android:layout_width="wrap_content"

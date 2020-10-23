@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.foodemi.foodemimenu.ui.viewmodel.feature.fragment.confirm_order.ConfirmOrderViewModel" />
+    </data>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/layout_choose_payment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@color/white"
+        android:layout_marginBottom="10dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:padding="12dp"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/image_confirm_order_payment_logo"
+                android:layout_width="26dp"
+                android:layout_height="26dp"
+                app:srcCompat="@drawable/ic_payment_methode"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="10dp"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/title_confirm_order_second"
+                android:padding="8dp"
+                android:layout_toEndOf="@+id/image_confirm_order_payment_logo"
+                android:textColor="@color/FOODEMI_COLOR_TEXT_MAIN"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Pilih Metode Pembayaran"
+                android:layout_marginStart="10dp"
+                android:textSize="13dp"
+                android:layout_centerVertical="true"
+                android:fontFamily="@font/roboto_medium"/>
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/image_confirm_order_payment_arrow"
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:visibility="visible"
+                app:srcCompat="@drawable/ic_baseline_arrow_forward_ios_24"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="20dp"
+                android:layout_alignParentEnd="true"/>
+
+        </RelativeLayout>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+</layout>

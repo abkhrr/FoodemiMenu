@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<layout>
+<layout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
         <variable
@@ -9,17 +12,88 @@
     </data>
 
     <RelativeLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="#FAFAFA"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
         tools:context=".ui.view.feature.fragment.confirm_order.FragmentConfirmOrder">
 
-        <!-- TODO: Update blank fragment layout -->
-        <TextView
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/view_menu_list_collection_RV"
+            android:overScrollMode="never"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="@string/hello_blank_fragment" />
+            android:layout_height="wrap_content"
+            android:clipToPadding="false"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:paddingTop="8dp"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:visibility="visible"
+            android:layout_alignParentBottom="true"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:background="@drawable/white_shadowed"
+            android:layout_width="match_parent"
+            android:layout_height="100dp">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/FOODEMI_PADDING_DEXTAR"
+                android:layout_marginTop="@dimen/FOODEMI_PADDING_DEXTAR"
+                android:layout_marginEnd="@dimen/FOODEMI_PADDING_DEXTAR"
+                android:layout_marginBottom="@dimen/FOODEMI_PADDING_DEXTAR"
+                android:orientation="vertical"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/view_btn_cart"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/view_text_total_title_confirm_order"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    tools:text="Subtotal"
+                    android:text="Subtotal"
+                    android:textSize="16dp"
+                    android:fontFamily="@font/foodemi_regular"
+                    android:textColor="@color/FOODEMI_COLOR_TEXT_MAIN" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/view_text_total_amount_confirm_order"
+                    android:textSize="18dp"
+                    tools:text="Rp 25.000"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/foodemi_bold"
+                    android:layout_marginTop="@dimen/FOODEMI_PADDING_OCTAR"
+                    android:textColor="@color/FOODEMI_COLOR_TEXT_SECONDARY" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/view_btn_cart"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/FOODEMI_PADDING_DEXTAR"
+                android:clickable="true"
+                android:layout_marginEnd="@dimen/FOODEMI_PADDING_DEXTAR"
+                android:layout_marginBottom="@dimen/FOODEMI_PADDING_DEXTAR"
+                android:background="@drawable/sp_widget_button_rect_positive"
+                android:fontFamily="@font/foodemi_bold"
+                android:text="CONFIRM"
+                android:textSize="14dp"
+                android:textColor="@color/FOODEMI_COLOR_TEXT_BUTTON"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:focusable="true" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </RelativeLayout>
 

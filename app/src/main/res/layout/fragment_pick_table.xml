@@ -62,7 +62,9 @@
                     android:hint="Pilih Nomor Meja"
                     android:textAlignment="center"
                     android:maxLines="1"
+                    android:fontFamily="@font/foodemi_regular"
                     android:clickable="true"
+                    android:textSize="14dp"
                     android:focusable="false"
                     android:dropDownVerticalOffset="10dp"
                     android:dropDownHeight="180dp"
@@ -78,7 +80,7 @@
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/view_btn_action_to_menu_list"
-                style="@style/Base.TextAppearance.AppCompat.Body1"
+                android:textSize="14dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/FOODEMI_PADDING_DEXTAR"

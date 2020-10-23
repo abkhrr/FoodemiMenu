@@ -22,4 +22,7 @@ interface CartDao {
     @Query("SELECT * FROM cart")
     fun getAllCartItem(): List<Cart>
 
+    @Query("DELETE FROM cart")
+    suspend fun clearDatabase()
+
 }

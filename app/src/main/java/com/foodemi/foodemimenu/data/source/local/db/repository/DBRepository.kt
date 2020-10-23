@@ -2,9 +2,11 @@ package com.foodemi.foodemimenu.data.source.local.db.repository
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.foodemi.foodemimenu.data.model.response.ModelMenuSectioned
 import com.foodemi.foodemimenu.data.source.local.db.AppDatabase
 import com.foodemi.foodemimenu.data.source.local.db.model.Cart
 import com.foodemi.foodemimenu.data.source.local.db.source.SealedCart
+import com.foodemi.foodemimenu.ui.view.feature.fragment.menu.menulist.utils.CartAllTotal
 import com.foodemi.foodemimenu.ui.view.feature.fragment.menu.menulist.utils.CartTotal
 import kotlinx.coroutines.*
 import javax.inject.Inject
@@ -35,8 +37,18 @@ class DBRepository @Inject constructor(private val mAppDatabase: AppDatabase) {
         return@coroutineScope deleteResults.await()
     }
 
-    suspend fun insertCartItem(cart: Cart){
+    suspend fun clearDatabase() = coroutineScope {
+        val deleteResults = async { mAppDatabase.clearAllTables() }
+        items.clear()
+        cartTotal.postValue(CartTotal(0, 0))
+        return@coroutineScope deleteResults.await()
+    }
 
+    suspend fun clearItemsInDb() = coroutineScope {
+        val deleteResults = async { mAppDatabase.cartDao().clearDatabase() }
+        items.clear()
+        cartTotal.postValue(CartTotal(0, 0))
+        return@coroutineScope deleteResults.await()
     }
 
     suspend fun updateItem(saleable: SealedCart) = coroutineScope {
@@ -92,7 +104,7 @@ class DBRepository @Inject constructor(private val mAppDatabase: AppDatabase) {
         return@coroutineScope products as ArrayList<T>
     }
 
-    fun updateTotals() {
+    private fun updateTotals() {
 
         CoroutineScope(Dispatchers.Default).launch {
 
@@ -109,8 +121,8 @@ class DBRepository @Inject constructor(private val mAppDatabase: AppDatabase) {
             }
 
             cartTotal.postValue(CartTotal(totalCost, items.size))
-        }
 
+        }
     }
 
 }

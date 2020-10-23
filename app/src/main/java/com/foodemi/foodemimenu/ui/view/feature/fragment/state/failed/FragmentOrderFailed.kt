@@ -2,6 +2,7 @@ package com.foodemi.foodemimenu.ui.view.feature.fragment.state.failed
 
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import com.foodemi.foodemimenu.BR
 import androidx.lifecycle.ViewModelProvider
 import com.foodemi.foodemimenu.R
@@ -41,6 +42,18 @@ class FragmentOrderFailed : CoreFragment<FragmentOrderFailedBinding, OrderFailed
         super.onCreate(savedInstanceState)
         orderFailedViewModel?.setNavigator(this)
     }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        setButtonNavigate()
+    }
+
+    private fun setButtonNavigate(){
+        with(getViewDataBinding()){
+
+        }
+    }
+
 
     override fun handleError(message: String?) {
         Log.e("Error_Message", message.toString())

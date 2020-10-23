@@ -59,10 +59,11 @@ class FragmentMenuList : CoreFragment<FragmentMenuListBinding, MenuListViewModel
         }
 
     private var tableNumber: String? = null
+    private var backListMenu: MutableList<ModelMenuSectioned.MenuFoodemi>?    = null
 
     private val adapter     = AdapterMenuCollection()
 
-    private val listMenu: MutableList<ModelMenuSectioned.MenuFoodemi>     = mutableListOf()
+    private val listMenu: MutableList<ModelMenuSectioned.MenuFoodemi>         = mutableListOf()
 
     private val listMenuAll        = ArrayList<ModelMenuSectioned.MenuFoodemi>()
     private val listMenuToSubmit   = ArrayList<ModelMenuSectioned.MenuFoodemi>()
@@ -71,7 +72,8 @@ class FragmentMenuList : CoreFragment<FragmentMenuListBinding, MenuListViewModel
         super.onCreate(savedInstanceState)
         menuListViewModel?.setNavigator(this)
         if (arguments != null){
-            tableNumber = arguments?.getString(Const.TABLE_NUMBER_PICK)
+            tableNumber  = arguments?.getString(Const.TABLE_NUMBER_PICK)
+            backListMenu = arguments?.getParcelableArrayList(Const.TABLE_NUMBER_PICK)
         }
         adapter.setListener(this)
     }
@@ -93,6 +95,16 @@ class FragmentMenuList : CoreFragment<FragmentMenuListBinding, MenuListViewModel
     private fun setup() {
         initRecyclerView()
         showVisibility()
+        bindMenu()
+    }
+
+    private fun bindMenu(){
+        backListMenu?.let { backMenu ->
+            if (listMenuAll.isEmpty() && backMenu.isNotEmpty() && backMenu.isNullOrEmpty()){
+                listMenu.clear()
+                listMenu.addAll(backMenu)
+            }
+        }
     }
 
     private fun initRecyclerView(){
@@ -126,25 +138,10 @@ class FragmentMenuList : CoreFragment<FragmentMenuListBinding, MenuListViewModel
             menuListViewModel?.updateItems(menu)
             showSnackbarCustom("berhasil tambah menu : ${menu.menuName}, x${menu.itemQuantity}")
 
-
             listMenu.add(menu)
             listMenuAll.addAll(listMenu)
             mapProductWithCart()
         }
-    }
-
-    private fun setMyCustomToast(message: String){
-        val toast = Toasty.custom(
-            requireContext(),
-            message,
-            R.drawable.background_ios_alert,
-            R.color.white,
-            Toast.LENGTH_SHORT,
-            false,
-            true
-        )
-        toast.setGravity(Gravity.BOTTOM, 0, -10000)
-        return toast.show()
     }
 
     private fun showSnackbarCustom(message: String) {
@@ -163,8 +160,7 @@ class FragmentMenuList : CoreFragment<FragmentMenuListBinding, MenuListViewModel
     @SuppressLint("SetTextI18n")
     private fun showVisibility(){
         menuListViewModel?.subscribeTotal()?.observe(
-            this.viewLifecycleOwner,
-            Observer { cartTotal ->
+            this.viewLifecycleOwner, { cartTotal ->
                 val readableValue =
                     PriceCheckerValue().checkIntValueToString(cartTotal.totalAmount.toString())
                 view_text_total_price_menu_list.text = readableValue
@@ -175,13 +171,10 @@ class FragmentMenuList : CoreFragment<FragmentMenuListBinding, MenuListViewModel
                     view_text_totalItems_menu_list.text = "${listMenu.size} items"
                 }
 
-                val lt = menuListViewModel?.getAllCartItem()
-
                 view_btn_cart.setOnClickListener {
-                    Log.e("MENU_PRICE_TOT", cartTotal.totalAmount.toString())
-                    Log.e("MENU_ITEM_TOT", cartTotal.totalItems.toString())
-                    Log.e("MENU_ITEM", lt.toString())
-                    Log.e("MENU_TOTAL", cartTotal.toString())
+                    val bundle = Bundle()
+                    bundle.putString(Const.TABLE_NUMBER_PICK, tableNumber)
+                    getNavController().navigate(R.id.menuList_to_confirm_order, bundle)
                 }
             })
     }

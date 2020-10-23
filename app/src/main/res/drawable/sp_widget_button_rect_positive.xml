@@ -1,0 +1,17 @@
+<shape
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle" >
+
+    <padding
+        android:left="@dimen/FOODEMI_PADDING_DEXTAR"
+        android:right="@dimen/FOODEMI_PADDING_DEXTAR"
+        android:top="@dimen/FOODEMI_PADDING_OCTAR"
+        android:bottom="@dimen/FOODEMI_PADDING_OCTAR"/>
+
+    <solid
+        android:color="@color/FOODEMI_DEFAULT_BACKGROUND"/>
+
+    <corners
+        android:radius="@dimen/FOODEMI_SIZE_CORNER_BUTTON"/>
+
+</shape>

@@ -3,7 +3,12 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    style="@style/FOODEMITextAppearanceBody"
-    android:gravity="start"
+    android:textSize="14dp"
+    android:textAlignment="center"
+    android:padding="10dp"
+    android:gravity="center"
     android:fontFamily="@font/foodemi_regular"
-    android:textColor="@color/FOODEMI_COLOR_TEXT_MAIN" />
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:text="hello"
+    android:textColor="@color/FOODEMI_COLOR_TEXT_MAIN"
+    tools:ignore="SpUsage" />

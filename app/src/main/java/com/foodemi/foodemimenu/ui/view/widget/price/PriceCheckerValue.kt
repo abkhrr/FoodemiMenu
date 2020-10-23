@@ -117,4 +117,64 @@ class PriceCheckerValue {
         }
     }
 
+    fun checkIntValueToStringWithRp(pToCheck: String): String {
+        return when(pToCheck.length){
+            4 -> {
+                val longval = pToCheck.toLong()
+                val formatter = DecimalFormat("#,###")
+                val formattedString: String = formatter.format(longval)
+                return "RP $formattedString"
+            }
+            5 -> {
+                val longval = pToCheck.toLong()
+                val formatter = DecimalFormat("##,###")
+                val formattedString: String = formatter.format(longval)
+                return "RP $formattedString"
+            }
+            6 -> {
+                val longval = pToCheck.toLong()
+                val formatter = DecimalFormat("###,###")
+                val formattedString: String = formatter.format(longval)
+                return "RP $formattedString"
+            }
+            7 -> {
+                val longval = pToCheck.toLong()
+                val formatter = DecimalFormat("#,###,###")
+                val formattedString: String = formatter.format(longval)
+                return "RP $formattedString"
+            }
+            8 -> {
+                val longval = pToCheck.toLong()
+                val formatter = DecimalFormat("##,###,###")
+                val formattedString: String = formatter.format(longval)
+                return "RP $formattedString"
+            }
+            9 -> {
+                val longval = pToCheck.toLong()
+                val formatter = DecimalFormat("###,###,###")
+                val formattedString: String = formatter.format(longval)
+                return "RP $formattedString"
+            }
+            10 -> {
+                val longval = pToCheck.toLong()
+                val formatter = DecimalFormat("#,###,###,###")
+                val formattedString: String = formatter.format(longval)
+                return "RP $formattedString"
+            }
+            11 -> {
+                val longval = pToCheck.toLong()
+                val formatter = DecimalFormat("##,###,###,###")
+                val formattedString: String = formatter.format(longval)
+                return "RP $formattedString"
+            }
+            12 -> {
+                val longval = pToCheck.toLong()
+                val formatter = DecimalFormat("###,###,###,###")
+                val formattedString: String = formatter.format(longval)
+                return "RP $formattedString"
+            }
+            else -> ""
+        }
+    }
+
 }

@@ -44,11 +44,13 @@ class MainActivity : CoreActivity<ActivityMainBinding, ActivityMainViewModel>(),
             when(destination.id) {
                 R.id.pickTable -> {
                     hideToolbarBackButton()
+                    hideBackBtn()
                     view_toolbar_title.text = ""
                     appBarLayoutMain.stateListAnimator = hideElevationAppBar()
                 }
                 R.id.menuList -> {
                     showToolbar()
+                    hideBackBtn()
                     hideToolbarBackButton()
                     view_toolbar_title.text = "MENU FOODEMI"
                     appBarLayoutMain.stateListAnimator = backToElevation()
@@ -56,21 +58,36 @@ class MainActivity : CoreActivity<ActivityMainBinding, ActivityMainViewModel>(),
                 R.id.menuDetails -> {
                     showToolbar()
                     actionBarBackButton()
+                    displayBackBtn()
                     view_toolbar_title.text = "DETAIL MENU"
+                    appBarLayoutMain.stateListAnimator = backToElevation()
+                }
+                R.id.confirmOrder -> {
+                    showToolbar()
+                    actionBarBackButton()
+                    hideBackBtn()
+                    view_toolbar_title.text = "CONFIRM ORDER"
                     appBarLayoutMain.stateListAnimator = backToElevation()
                 }
             }
         }
     }
 
-
-
     private fun actionBarBackButton(): ActionBar?{
         return supportActionBar?.apply {
             setDisplayHomeAsUpEnabled(true)
+            setDisplayShowHomeEnabled(true)
             setHomeAsUpIndicator(R.drawable.ic_arrow_back_black_24dp)
             supportActionBar?.setDisplayShowTitleEnabled(false)
         }
+    }
+
+    private fun displayBackBtn(){
+        actionVarBackBtn.visibility = View.VISIBLE
+    }
+
+    private fun hideBackBtn(){
+        actionVarBackBtn.visibility = View.GONE
     }
 
     private fun hideToolbarBackButton(): ActionBar?{

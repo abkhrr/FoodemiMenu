@@ -34,6 +34,9 @@ class ModelMenuSectioned {
         @SerializedName("menuName")
         var menuName: String,
 
+        @SerializedName("menuQty")
+        var menuQty: String,
+
         @SerializedName("menuImage")
         var menuImage: String,
 
